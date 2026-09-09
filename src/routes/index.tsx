@@ -1,22 +1,21 @@
-import { createFileRoute } from "@tanstack/react-router";
-import proj1 from "@/assets/proj-1.jpg";
-import proj2 from "@/assets/proj-2.jpg";
-import proj3 from "@/assets/proj-3.jpg";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import portrait from "@/assets/portrait.jpg";
+import { skills } from "@/data/skills";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Stevanus Ryo Wijaya — Game Developer & Data Scientist" },
+      { title: "Stevanus Ryo Wijaya — Game & Data Portfolio" },
       {
         name: "description",
         content:
-          "Portofolio Stevanus Ryo Wijaya: game development dan data science. Keahlian, riwayat pendidikan, sertifikasi, pencapaian, dan proyek pilihan.",
+          "Perkenalan Stevanus Ryo Wijaya: riwayat pendidikan, pengalaman, kontak, serta keahlian di game art, game programming, dan data analysis.",
       },
-      { property: "og:title", content: "Stevanus Ryo Wijaya — Game Developer & Data Scientist" },
+      { property: "og:title", content: "Stevanus Ryo Wijaya — Game & Data Portfolio" },
       {
         property: "og:description",
-        content:
-          "Portofolio Stevanus Ryo Wijaya: game development dan data science, lengkap dengan pendidikan, sertifikasi, dan proyek pilihan.",
+        content: "Perkenalan diri, riwayat pendidikan, pengalaman, kontak, dan halaman keahlian.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -24,20 +23,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const gameSkills = [
-  ["Unity_Engine / C#", "[Advanced]"],
-  ["Unreal / C++", "[Intermediate]"],
-  ["Compute_Shaders", "[Research]"],
-  ["Physics_Optimization", "[Production]"],
-];
-
-const dataSkills = [
-  ["Python / PyTorch", "[Expert]"],
-  ["ETL_Pipelines", "[Scaled]"],
-  ["Predictive_Modeling", "[0.91_Acc]"],
-  ["SQL / Graph_Theory", "[Theory]"],
-];
 
 const education = [
   {
@@ -54,131 +39,89 @@ const education = [
   },
 ];
 
-const certifications = [
-  ["Unity Certified Associate: Programmer", "2025"],
-  ["TensorFlow Developer Certificate", "2025"],
-  ["Google Data Analytics Professional", "2024"],
-  ["Machine Learning Specialization", "2024"],
-];
-
-const awards = [
-  ["Juara 1 — Game Jam Nasional", "2025 // kategori tim indie"],
-  ["Finalis — Data Science Hackathon", "2025 // top 20 nasional"],
-  ["Best Student Project", "2024 // showcase kampus"],
-];
-
-const projects = [
+const experience = [
   {
-    img: proj1,
-    tag: "SIM_MODULE",
-    file: "IMG_01.DAT",
-    title: "Nirvana_Render",
-    desc: "Game eksplorasi atmosferik dengan sistem pencahayaan volumetrik kustom di Unity.",
+    ts: "2025 — SEKARANG",
+    title: "Freelance Game Developer",
+    desc: "Mengerjakan prototipe game indie: gameplay system, aset visual, dan optimasi performa.",
     active: true,
   },
   {
-    img: proj2,
-    tag: "DATA_MODULE",
-    file: "IMG_02.DAT",
-    title: "Predict_Node",
-    desc: "Analisis sentimen pasar secara real-time menggunakan model deep learning.",
+    ts: "2024 — 2025",
+    title: "Data Analyst Intern",
+    desc: "Membangun pipeline data dan dashboard untuk memantau perilaku pengguna produk digital.",
     active: false,
   },
   {
-    img: proj3,
-    tag: "CORE_SYSTEM",
-    file: "IMG_03.DAT",
-    title: "Auto_City",
-    desc: "Generator kota prosedural yang digerakkan data kepadatan populasi urban.",
+    ts: "2023 — 2024",
+    title: "Asisten Laboratorium Komputer",
+    desc: "Mendampingi praktikum pemrograman dasar dan struktur data untuk mahasiswa tingkat awal.",
     active: false,
   },
+];
+
+const contacts = [
+  ["EMAIL", "stevanus.ryo@example.com", "mailto:stevanus.ryo@example.com"],
+  ["LINKEDIN", "/in/stevanusryo", "https://linkedin.com"],
+  ["GITHUB", "@stevanusryo", "https://github.com"],
+  ["LOKASI", "Jakarta, Indonesia", ""],
 ];
 
 function Index() {
   return (
     <div className="blueprint text-foreground bg-background relative min-h-screen overflow-x-hidden">
       <div className="scanline animate-[scan_8s_linear_infinite]" />
-
-      <header className="bg-background/80 border-border sticky top-0 z-50 border-b backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#" className="font-display terminal-glow text-xl font-bold tracking-tighter">
-            STEVANUS&nbsp;R.W
-          </a>
-          <div className="hidden items-center gap-2 font-mono text-[10px] tracking-[0.2em] uppercase md:flex">
-            <a href="#tentang" className="text-muted-foreground hover:text-primary px-4 py-1 transition-colors">
-              [01] About
-            </a>
-            <a href="#keahlian" className="text-muted-foreground hover:text-primary px-4 py-1 transition-colors">
-              [02] Skills
-            </a>
-            <a href="#pendidikan" className="text-muted-foreground hover:text-primary px-4 py-1 transition-colors">
-              [03] Logs
-            </a>
-            <a href="#portofolio" className="text-muted-foreground hover:text-primary px-4 py-1 transition-colors">
-              [04] Data
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="bg-primary size-2 animate-pulse rounded-full" />
-            <a
-              href="#portofolio"
-              className="border-primary/40 text-primary hover:bg-primary/10 rounded-sm border px-4 py-2 font-mono text-[10px] transition-all"
-            >
-              SYSTEM_READY
-            </a>
-          </div>
-        </nav>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
-      <section className="relative mx-auto max-w-6xl px-6 pt-32 pb-20">
-        <div className="border-primary/30 animate-[rise_800ms_var(--ease-fluid)_both] border-l-2 pl-8 md:pl-12">
-          <p className="text-primary mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase">
-            <span className="bg-primary/40 h-px w-8" /> INIT_CORE_PROCESS
-          </p>
-          <h1 className="font-display text-7xl leading-[0.85] font-bold tracking-tighter text-balance md:text-9xl">
-            STEVANUS <br />
-            RYO WIJAYA
-          </h1>
-          <p className="text-muted-foreground mt-10 max-w-[40ch] text-xl leading-relaxed font-light italic opacity-80 md:text-2xl">
-            Menjembatani dunia game interaktif dengan pemodelan data berdensitas tinggi.
-          </p>
-          <div className="mt-12 flex flex-wrap items-center gap-6">
-            <a
-              href="#portofolio"
-              className="bg-primary text-primary-foreground rounded-xs px-8 py-4 text-xs font-bold tracking-widest uppercase transition-all hover:brightness-110"
-            >
-              Lihat Portofolio
-            </a>
-            <a
-              href="#tentang"
-              className="text-muted-foreground hover:text-foreground font-mono text-xs tracking-widest underline underline-offset-8 transition-colors"
-            >
-              Read_Documentation
-            </a>
-          </div>
-        </div>
-
-        <div className="bg-border border-border mt-20 grid animate-[rise_800ms_var(--ease-fluid)_both] grid-cols-2 gap-px border [animation-delay:200ms] md:grid-cols-4">
-          {[
-            ["Exp_Duration", "03+", " YRS"],
-            ["Nodes_Built", "12", ""],
-            ["Signal_Auth", "04", ""],
-            ["Focus_Fields", "02", ""],
-          ].map(([label, value, unit]) => (
-            <div key={label} className="bg-background p-6">
-              <p className="text-muted-foreground mb-2 font-mono text-[10px] tracking-widest uppercase">{label}</p>
-              <p className="font-display text-3xl font-bold">
-                {value}
-                {unit ? <span className="text-primary font-mono text-sm tracking-tighter">{unit}</span> : null}
-              </p>
+      <section className="relative mx-auto max-w-6xl px-6 pt-24 pb-20">
+        <div className="grid items-center gap-12 md:grid-cols-[1.3fr_1fr]">
+          <div className="border-primary/30 animate-[rise_800ms_var(--ease-fluid)_both] border-l-2 pl-8 md:pl-12">
+            <p className="text-primary mb-6 flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase">
+              <span className="bg-primary/40 h-px w-8" /> INIT_CORE_PROCESS
+            </p>
+            <h1 className="font-display text-6xl leading-[0.85] font-bold tracking-tighter text-balance md:text-8xl">
+              STEVANUS <br />
+              RYO WIJAYA
+            </h1>
+            <p className="text-muted-foreground mt-8 max-w-[42ch] text-lg leading-relaxed font-light italic opacity-80 md:text-xl">
+              Menjembatani dunia game interaktif dengan pemodelan data berdensitas tinggi.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-6">
+              <a
+                href="#keahlian"
+                className="bg-primary text-primary-foreground rounded-xs px-8 py-4 text-xs font-bold tracking-widest uppercase transition-all hover:brightness-110"
+              >
+                Lihat Keahlian
+              </a>
+              <a
+                href="#kontak"
+                className="text-muted-foreground hover:text-foreground font-mono text-xs tracking-widest underline underline-offset-8 transition-colors"
+              >
+                Hubungi_Saya
+              </a>
             </div>
-          ))}
+          </div>
+
+          <div className="relative animate-[rise_800ms_var(--ease-fluid)_both] [animation-delay:150ms]">
+            <div className="border-border relative overflow-hidden border">
+              <img
+                src={portrait}
+                alt="Foto diri Stevanus Ryo Wijaya"
+                width={1024}
+                height={1280}
+                className="aspect-[4/5] w-full object-cover"
+              />
+              <div className="border-primary/30 text-primary absolute top-3 left-3 border px-2 py-1 font-mono text-[9px]">
+                ID_PHOTO.JPG
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* TENTANG */}
-      <section id="tentang" className="border-border mx-auto max-w-6xl border-t px-6 py-24">
+      <section id="tentang" className="border-border mx-auto max-w-6xl scroll-mt-24 border-t px-6 py-24">
         <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
           <div>
             <h2 className="text-primary mb-4 font-mono text-xs tracking-[0.4em] uppercase">USER_PROFILE</h2>
@@ -203,38 +146,8 @@ function Index() {
         </div>
       </section>
 
-      {/* KEAHLIAN */}
-      <section id="keahlian" className="border-border mx-auto max-w-6xl border-t px-6 py-24">
-        <div className="grid gap-12 md:grid-cols-2">
-          {[
-            { no: "01", title: "Game Development", rows: gameSkills },
-            { no: "02", title: "Data Science", rows: dataSkills },
-          ].map((domain) => (
-            <div key={domain.no} className="group">
-              <div className="mb-8 flex items-center gap-4">
-                <div className="border-primary/20 text-primary flex size-8 items-center justify-center border font-mono text-xs">
-                  {domain.no}
-                </div>
-                <h2 className="font-display text-3xl font-bold tracking-tight uppercase">{domain.title}</h2>
-              </div>
-              <div className="space-y-4 font-mono text-[12px] opacity-70 transition-opacity group-hover:opacity-100">
-                {domain.rows.map(([name, level], i) => (
-                  <div
-                    key={name}
-                    className={`flex justify-between ${i < domain.rows.length - 1 ? "border-border/40 border-b pb-3" : ""}`}
-                  >
-                    <span>{name}</span>
-                    <span className="text-primary">{level}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* PENDIDIKAN */}
-      <section id="pendidikan" className="border-border mx-auto max-w-6xl border-t px-6 py-24">
+      <section id="pendidikan" className="border-border mx-auto max-w-6xl scroll-mt-24 border-t px-6 py-24">
         <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
           <div>
             <h2 className="text-primary mb-4 font-mono text-xs tracking-[0.4em] uppercase">SYS_HISTORY_LOG</h2>
@@ -246,88 +159,82 @@ function Index() {
           </div>
           <div className="space-y-12">
             {education.map((item) => (
-              <div
-                key={item.ts}
-                className={`relative border-l pl-8 ${item.active ? "border-primary/20" : "border-primary/10"}`}
-              >
-                <div
-                  className={
-                    item.active
-                      ? "bg-primary absolute top-0 -left-1.5 size-3 shadow-[0_0_10px_var(--color-primary)]"
-                      : "bg-border absolute top-0 -left-1 size-2"
-                  }
-                />
-                <p className={`mb-1 font-mono text-[10px] ${item.active ? "text-primary" : "text-muted-foreground"}`}>
-                  {item.ts}
-                </p>
-                <h4 className="font-display text-xl font-bold uppercase">{item.title}</h4>
-                <p className="text-muted-foreground mt-2 max-w-[46ch] text-sm leading-relaxed">{item.desc}</p>
-              </div>
+              <Timeline key={item.ts} {...item} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* SERTIFIKASI + PENCAPAIAN */}
-      <section className="border-border mx-auto max-w-6xl border-t px-6 py-24">
-        <div className="grid gap-16 md:grid-cols-2">
+      {/* PENGALAMAN */}
+      <section id="pengalaman" className="border-border mx-auto max-w-6xl scroll-mt-24 border-t px-6 py-24">
+        <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
           <div>
-            <h2 className="text-primary mb-8 font-mono text-xs tracking-[0.4em] uppercase">CERT_REGISTRY</h2>
-            <div className="space-y-4 font-mono text-[12px]">
-              {certifications.map(([name, year]) => (
-                <div key={name} className="border-border/40 flex justify-between border-b pb-3">
-                  <span>{name}</span>
-                  <span className="text-primary">{year}</span>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-primary mb-4 font-mono text-xs tracking-[0.4em] uppercase">RUNTIME_LOG</h2>
+            <h3 className="font-display text-5xl font-bold tracking-tighter">
+              PENGALAMAN
+            </h3>
           </div>
-          <div>
-            <h2 className="text-primary mb-8 font-mono text-xs tracking-[0.4em] uppercase">AWARD_STACK</h2>
-            <div className="space-y-8">
-              {awards.map(([title, meta]) => (
-                <div key={title}>
-                  <h4 className="font-display text-xl font-bold tracking-wide uppercase">{title}</h4>
-                  <p className="text-muted-foreground mt-1 font-mono text-[10px]">{meta}</p>
-                </div>
-              ))}
-            </div>
+          <div className="space-y-12">
+            {experience.map((item) => (
+              <Timeline key={item.ts} {...item} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* PORTOFOLIO */}
-      <section id="portofolio" className="border-border mx-auto max-w-6xl border-t px-6 py-24">
-        <div className="mb-12 flex items-end justify-between">
-          <h2 className="font-display text-5xl font-bold tracking-tighter">PROJECT_REPOSITORY</h2>
-          <p className="text-muted-foreground text-right font-mono text-[10px]">BROWSE_ALL.EXE [{projects.length}]</p>
+      {/* KEAHLIAN */}
+      <section id="keahlian" className="border-border mx-auto max-w-6xl scroll-mt-24 border-t px-6 py-24">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 className="text-primary mb-4 font-mono text-xs tracking-[0.4em] uppercase">SKILL_INDEX</h2>
+            <h3 className="font-display text-5xl font-bold tracking-tighter">KEAHLIAN</h3>
+          </div>
+          <p className="text-muted-foreground max-w-[40ch] font-mono text-[10px] leading-relaxed">
+            Pilih salah satu bidang untuk melihat detail keahlian, penghargaan, dan portofolio di halaman tersendiri.
+          </p>
         </div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {projects.map((p) => (
-            <div key={p.title} className="group relative">
-              <div className="border-border group-hover:border-primary/50 relative aspect-[4/3] w-full overflow-hidden border transition-colors">
-                <img
-                  src={p.img}
-                  alt={`Pratinjau proyek ${p.title}`}
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="size-full object-cover opacity-80 transition-opacity group-hover:opacity-100"
-                />
-                <div className="text-muted-foreground absolute bottom-2 left-2 font-mono text-[10px]">{p.file}</div>
-                {p.active ? (
-                  <div className="border-primary/20 text-primary absolute top-2 right-2 border px-1 font-mono text-[8px]">
-                    ACTIVE
-                  </div>
-                ) : null}
+        <div className="grid gap-6 md:grid-cols-3">
+          {skills.map((s) => (
+            <Link
+              key={s.slug}
+              to="/keahlian/$slug"
+              params={{ slug: s.slug }}
+              className="group border-border hover:border-primary/60 hover:bg-primary/5 flex flex-col justify-between border p-8 transition-all"
+            >
+              <div>
+                <p className="text-primary font-mono text-[10px]">MODULE_{s.code}</p>
+                <h4 className="font-display mt-3 text-2xl font-bold tracking-tight uppercase">{s.name}</h4>
+                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">{s.tagline}</p>
               </div>
-              <div className="mt-6">
-                <p className="text-primary font-mono text-[10px]">{p.tag}</p>
-                <h3 className="font-display mt-1 text-lg font-bold tracking-wide uppercase">{p.title}</h3>
-                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{p.desc}</p>
-              </div>
-            </div>
+              <span className="text-primary mt-8 font-mono text-[10px] tracking-widest">
+                OPEN_PAGE →
+              </span>
+            </Link>
           ))}
+        </div>
+      </section>
+
+      {/* KONTAK */}
+      <section id="kontak" className="border-border mx-auto max-w-6xl scroll-mt-24 border-t px-6 py-24">
+        <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
+          <div>
+            <h2 className="text-primary mb-4 font-mono text-xs tracking-[0.4em] uppercase">OPEN_CHANNEL</h2>
+            <h3 className="font-display text-5xl font-bold tracking-tighter">KONTAK</h3>
+          </div>
+          <div className="space-y-4 font-mono text-[12px]">
+            {contacts.map(([label, value, href]) => (
+              <div key={label} className="border-border/40 flex justify-between gap-6 border-b pb-3">
+                <span className="text-muted-foreground">{label}</span>
+                {href ? (
+                  <a href={href} className="text-primary hover:underline">
+                    {value}
+                  </a>
+                ) : (
+                  <span>{value}</span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -335,6 +242,23 @@ function Index() {
         <p>ESTABLISHED_2026 // STEVANUS RYO WIJAYA</p>
         <p className="mt-4 md:mt-0">CONNECTED_TO_NODE: JAKARTA_CORE_01</p>
       </footer>
+    </div>
+  );
+}
+
+function Timeline({ ts, title, desc, active }: { ts: string; title: string; desc: string; active: boolean }) {
+  return (
+    <div className={`relative border-l pl-8 ${active ? "border-primary/20" : "border-primary/10"}`}>
+      <div
+        className={
+          active
+            ? "bg-primary absolute top-0 -left-1.5 size-3 shadow-[0_0_10px_var(--color-primary)]"
+            : "bg-border absolute top-0 -left-1 size-2"
+        }
+      />
+      <p className={`mb-1 font-mono text-[10px] ${active ? "text-primary" : "text-muted-foreground"}`}>{ts}</p>
+      <h4 className="font-display text-xl font-bold uppercase">{title}</h4>
+      <p className="text-muted-foreground mt-2 max-w-[46ch] text-sm leading-relaxed">{desc}</p>
     </div>
   );
 }
