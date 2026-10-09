@@ -20,6 +20,9 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Unity WebGL builds (dibuat di repo GitHub terpisah & dipanggil lewat GitHub Pages)
+public/games/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

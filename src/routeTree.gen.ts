@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as KeahlianSlugRouteImport } from './routes/keahlian.$slug'
+import { Route as SkillsSlugRouteImport } from './routes/skills.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const KeahlianSlugRoute = KeahlianSlugRouteImport.update({
   path: '/keahlian/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SkillsSlugRoute = SkillsSlugRouteImport.update({
+  id: '/skills/$slug',
+  path: '/skills/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/keahlian/$slug': typeof KeahlianSlugRoute
+  '/skills/$slug': typeof SkillsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/keahlian/$slug': typeof KeahlianSlugRoute
+  '/skills/$slug': typeof SkillsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/keahlian/$slug': typeof KeahlianSlugRoute
+  '/skills/$slug': typeof SkillsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/keahlian/$slug'
+  fullPaths: '/' | '/keahlian/$slug' | '/skills/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/keahlian/$slug'
-  id: '__root__' | '/' | '/keahlian/$slug'
+  to: '/' | '/keahlian/$slug' | '/skills/$slug'
+  id: '__root__' | '/' | '/keahlian/$slug' | '/skills/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   KeahlianSlugRoute: typeof KeahlianSlugRoute
+  SkillsSlugRoute: typeof SkillsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KeahlianSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/skills/$slug': {
+      id: '/skills/$slug'
+      path: '/skills/$slug'
+      fullPath: '/skills/$slug'
+      preLoaderRoute: typeof SkillsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   KeahlianSlugRoute: KeahlianSlugRoute,
+  SkillsSlugRoute: SkillsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
