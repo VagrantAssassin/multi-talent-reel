@@ -238,22 +238,7 @@ export const portfolioDataEN: PortfolioData = {
       certificates: [],
       achievements: [],
       portfolio: [
-        {
-          title: "Data Analytics & Exploratory Insights",
-          imageUrl: proj2,
-          tag: "Data Analytics",
-          description:
-            "A data analysis pipeline using Python, Pandas, and interactive visualizations to extract hidden patterns from complex datasets.",
-          projectUrl: "https://github.com/VagrantAssassin",
-        },
-        {
-          title: "GitHub Development & Open-Source Projects",
-          imageUrl: proj3,
-          tag: "GitHub",
-          description:
-            "Code repositories, algorithm implementations, and data automation scripts for software engineering projects.",
-          projectUrl: "https://github.com/VagrantAssassin",
-        },
+
       ],
     },
   ],
@@ -402,22 +387,7 @@ export const portfolioDataID: PortfolioData = {
       certificates: [],
       achievements: [],
       portfolio: [
-        {
-          title: "Data Analytics & Exploratory Insights",
-          imageUrl: proj2,
-          tag: "Data Analytics",
-          description:
-            "Pipeline analisis data menggunakan Python, Pandas, dan visualisasi interaktif untuk mengekstrak pola tersembunyi dari dataset kompleks.",
-          projectUrl: "https://github.com/VagrantAssassin",
-        },
-        {
-          title: "GitHub Development & Open-Source Projects",
-          imageUrl: proj3,
-          tag: "GitHub",
-          description:
-            "Repositori kode pemrograman, implementasi algoritma, serta script otomatisasi data dan rekayasa perangkat lunak.",
-          projectUrl: "https://github.com/VagrantAssassin",
-        },
+
       ],
     },
   ],
