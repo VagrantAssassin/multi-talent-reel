@@ -89,7 +89,7 @@ const sharedContact: ContactData = {
   email: "stevanusryowijaya@gmail.com",
   phone: "+62 819 4732 0913",
   location: "Bandung, West Java, Indonesia",
-  linkedin: "https://linkedin.com/in/stevanusryowijaya",
+  linkedin: "https://linkedin.com/in/stevanus-ryo-wijaya",
   github: "https://github.com/VagrantAssassin",
   instagram: "https://instagram.com/schwarzer_art",
   itchio: "https://vagrant-assassin.itch.io/",
